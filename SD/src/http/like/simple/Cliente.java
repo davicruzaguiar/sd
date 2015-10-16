@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JEditorPane;
@@ -33,16 +35,16 @@ public class Cliente extends JFrame{
 		System.out.println(texto);
 
 		switch (tag) {
-		case "u":
+		case "r":
 			//out.writeUTF(texto.toUpperCase());
 			//System.out.println("Upper Case " + texto.toUpperCase());
 			texto  = "<html><b style=color:red>"+ texto +"</b></html>";
 			break;
-		case "l":
+		case "g":
 			//System.out.println("Low CAse " + texto.toLowerCase());
 			texto  = "<html><b style=color:green>"+ texto +"</b></html>";
 			break;
-		case"r":
+		case"b":
 			//System.out.println("Color Red" + texto);
 			texto  = "<html><b style=color:blue>"+ texto +"</b></html>";
 			break;
@@ -89,13 +91,17 @@ public class Cliente extends JFrame{
 			DataInputStream in = new DataInputStream(s.getInputStream());
 			DataOutputStream out = new DataOutputStream(s.getOutputStream());
 			System.out.println("Conectado. Enviando " + total + " números...");
-		
+			
+			//List<String> list =  new ArrayList<String>();
+			Cliente cliente = new Cliente();
 			String entrada = "";
+				
 			entrada = in.readUTF();
 			
 			//entrada = selectTag(entrada);
 			
-			Cliente cliente = new Cliente();
+		//	list.add(selectTag(entrada));
+			
 			cliente.exibeFrame(selectTag(entrada));
 			
 			out.flush();
