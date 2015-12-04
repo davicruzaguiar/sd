@@ -28,7 +28,7 @@ public class EsseNapsterRecebe {
 
 		try {
 
-			sock = new Socket("127.0.0.1", 6789);
+			sock = new Socket("192.168.98.248", 6789);
 			in = new DataInputStream(sock.getInputStream());
 			String files = "";
 
@@ -65,13 +65,14 @@ public class EsseNapsterRecebe {
 			int bytesRead;
 
 			// Copia conteudo do canal
-			System.out.println("Download em andamento...");
+			//System.out.println("Download em andamento...");
 			System.out.println("");
+			
+			System.out.println("Download concluído com sucesso!");
 			while ((bytesRead = is.read(cbuffer)) != -1) {
 				file.write(cbuffer, 0, bytesRead);
 				file.flush();
 			}
-
 			System.out.println("Download concluído com sucesso!");
 		} catch (Exception e) {
 			e.printStackTrace();
